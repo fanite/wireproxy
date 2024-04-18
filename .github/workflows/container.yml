@@ -39,7 +39,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.TOKEN }}
 
       - uses: actions/checkout@v4
         with:
@@ -51,7 +51,7 @@ jobs:
 
       - name: Build container
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
           CONTAINER_TAG=$(echo "$RAW_CONTAINER_TAG" | sed 's/[^a-zA-Z0-9]\+/-/')
           REF_NAME=$(echo "$RAW_REF_NAME" | sed -r 's#^refs/(heads|tags)/##')
